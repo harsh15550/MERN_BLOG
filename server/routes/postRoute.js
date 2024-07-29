@@ -5,7 +5,7 @@ import tokenVerify from '../middleware/tokenVerify.js';
 
 const postRouter = express.Router();
 
-postRouter.post("/add" , upload.single("image") , postAdd);
+postRouter.post("/add" ,tokenVerify, upload.single("image") , postAdd);
 postRouter.get("/findpost" , findAllPost);
 postRouter.get("/search" , searchPost);
 

@@ -5,14 +5,13 @@ const postAdd = async (req, res) => {
     const image = req.file.filename;
     // console.log(req.user);
     try {
-        // const info = req.user;
-            // const userData = await userModel.findById(info.userId);
+        const info = req.user;
             const {title , description ,category , summary } = req.body;
             const newPost =  new postModel({
                 title ,
                 description ,
                 category ,
-                // auther : info.userId,
+                auther : info.userId,
                 image,
                 summary
             });    
