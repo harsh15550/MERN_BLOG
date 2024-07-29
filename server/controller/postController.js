@@ -2,17 +2,18 @@ import postModel from "../model/postModel.js";
 import jwt from "jsonwebtoken";
 
 const postAdd = async (req, res) => {
-    const image = req.file.filename;
+    // const image = req.file.filename;
     // console.log(req.user);
     try {
         const info = req.user;
+            // const userData = await userModel.findById(info.userId);
             const {title , description ,category , summary } = req.body;
             const newPost =  new postModel({
                 title ,
                 description ,
                 category ,
                 auther : info.userId,
-                image,
+                // image,
                 summary
             });    
             await newPost.save(); 
