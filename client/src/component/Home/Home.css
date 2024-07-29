@@ -73,6 +73,7 @@
 .top-latest-blog{
     display: flex;
     gap: 40px;
+    height: 60vh;
     margin: 35px;
     align-items: center;
     justify-content: center;

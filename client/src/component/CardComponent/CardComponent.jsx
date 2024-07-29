@@ -6,7 +6,7 @@ import { StoreContext } from '../../Context/contextProvider';
 
 const CardComponent = (posts) => {
 
-  const {setLoginData , findAllPost} = useContext(StoreContext);
+  const { findAllPost} = useContext(StoreContext);
 
     const formatDate = (dateString) => {
       const options = { year: 'numeric', month: 'long', day: 'numeric' };

@@ -69,7 +69,6 @@ const CreatePost = () => {
     try {
       const response = await fetch("https://blog-app-q9u5.onrender.com/api/post/add", {
         method: "POST",
-        headers: {"Content-Type":"application/json"},
         body: formData,
         credentials: 'include',
         
@@ -97,11 +96,11 @@ const CreatePost = () => {
             <input type="text" required onChange={e => setSummary(e.target.value)} value={summary} name='title' placeholder="Summary" />
           </div>
           <div className="flex-content">
-            {/* <div className="createBlogTitle">
+            <div className="createBlogTitle">
               <label htmlFor="file">Choose File:</label>
               <input type="file" required onChange={handleFileChange} hidden ref={fileRef} />
             </div>
-            <button type="button" className='chooseFile' onClick={() => fileRef.current.click()}>Choose File</button> */}
+            <button type="button" className='chooseFile' onClick={() => fileRef.current.click()}>Choose File</button>
 
             <div className="createBlogTitle">
               <label htmlFor="category">Category: </label>

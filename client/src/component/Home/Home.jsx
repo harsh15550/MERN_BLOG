@@ -7,11 +7,12 @@ import CardComponent from '../CardComponent/CardComponent';
 import { StoreContext } from '../../Context/contextProvider';
 import HomeBottom from '../HomeBottom/HomeBottom';
 import SubscriptionForm from '../Subscription/Subscription';
+import Loading from '../Loading/Loading';
 
 const Home = () => {
   const [expandedImage, setExpandedImage] = useState("image1");
 
-  const {allPost, findAllPost} = useContext(StoreContext);
+  const {allPost, findAllPost, loading} = useContext(StoreContext);
 
   const handleImageClick = (imageId) => {
     setExpandedImage(imageId);
@@ -59,6 +60,7 @@ const Home = () => {
                 <h1>Latest Blogs...</h1>
                 <div className="top-latest-blog">
                 {
+                    loading ? (<div style={{position:'absolute'}}> <Loading /> </div>) : (
                     allPost.slice().reverse().map((posts , index)=>{
                         if(index <= 2){
                             return (
@@ -69,7 +71,7 @@ const Home = () => {
                             )
                         }
                         
-                    })
+                    }) )
                 }
                 </div>
             </div>
