@@ -26,7 +26,7 @@ app.use(cors({
 app.use(cookieParser());
 
 // Body-parser middleware
-app.use(bodyParser.json({ limit: '10mb' }));
+// app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(fileUpload({
 //     limits: { fileSize: 10 * 1024 * 1024 } // 10 MB limit

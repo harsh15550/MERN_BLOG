@@ -67,7 +67,7 @@ const CreatePost = () => {
     formData.append('image', image);
 
     try {
-      const response = await fetch("https://blog-app-q9u5.onrender.com/api/post/add", {
+      const response = await fetch("http://localhost:3000/api/post/add", {
         method: "POST",
         body: formData,
         credentials: 'include',
