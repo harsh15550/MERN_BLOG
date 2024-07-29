@@ -97,11 +97,11 @@ const CreatePost = () => {
             <input type="text" required onChange={e => setSummary(e.target.value)} value={summary} name='title' placeholder="Summary" />
           </div>
           <div className="flex-content">
-            <div className="createBlogTitle">
+            {/* <div className="createBlogTitle">
               <label htmlFor="file">Choose File:</label>
               <input type="file" required onChange={handleFileChange} hidden ref={fileRef} />
             </div>
-            <button type="button" className='chooseFile' onClick={() => fileRef.current.click()}>Choose File</button>
+            <button type="button" className='chooseFile' onClick={() => fileRef.current.click()}>Choose File</button> */}
 
             <div className="createBlogTitle">
               <label htmlFor="category">Category: </label>

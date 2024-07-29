@@ -8,6 +8,7 @@ import userRouter from "./routes/userRoute.js";
 import postRouter from "./routes/postRoute.js";
 import findUserRouter from "./routes/findUserRoute.js";
 import FindBlogRouter from "./routes/findBlogroute.js";
+import fileUpload from "express-fileupload";
 
 
 mongoose.connect(process.env.DB_CONNECT).then(() => console.log("DB CONNECT")).catch(()=> console.log("CONNECTION FAILED"))
@@ -23,6 +24,12 @@ app.use(cors({
     credentials: true 
 }));
 app.use(cookieParser());
+// Body-parser middleware
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(fileUpload({
+    limits: { fileSize: 10 * 1024 * 1024 } // 10 MB limit
+}));
 
 // API
 app.use("/api/user" , userRouter);
