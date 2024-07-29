@@ -1,0 +1,40 @@
+.blog-detail{
+    display: grid;    
+    grid-template-columns: 1fr 350px;
+    margin: 50px 40px 0px 30px;
+}
+
+.blog-data .blog-image img{
+    width: 100%;
+    object-fit: cover;
+    height: 550px;
+    border-radius: 15px;
+}
+
+.blog-detail-title{
+    margin: 10px 0px;
+}
+
+.blog-detail-profile-img{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    background-color: grey;
+    border-radius: 50%;
+}
+
+.blog-userdetail{
+    display: flex;
+    gap: 10px;
+}
+
+.blog-origian-content{
+    margin-top: 30px;
+    padding: 20px;
+    font-size: 20px;
+    border-top: 1px solid grey;
+}
+
+.top-blog{
+    margin-left: 20px;
+}

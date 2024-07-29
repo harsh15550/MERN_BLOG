@@ -1,0 +1,28 @@
+
+.footer-container{
+    margin-top: 100px;
+    display: flex;
+    padding: 0px 20px 20p;
+    align-items: center;
+    border: 1px 0px 1px 0px;
+    justify-content: space-between;
+}
+
+.logo h1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 40px;
+}
+
+.footer-container .footer-content{
+    width: 400px;
+}
+
+.footer-container .footer-links h2{
+    margin-bottom: 10px;
+}
+
+.copyright{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+}

@@ -1,0 +1,33 @@
+.category-btns{
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+    margin: 30px;
+}
+
+.category-btns button{
+    padding: 7px 15px;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    font-size: 17px;
+    white-space: nowrap;
+}
+
+.category-btns::-webkit-scrollbar{
+    display: none;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.cards{
+    animation: fadeIn 1s;
+}

@@ -1,0 +1,180 @@
+.profile-containe{
+    width: 100%;
+    height: 140vh;
+    margin-top: 30px;
+    position: relative;
+}
+
+.profile-banner{
+    width: 100%;
+    height: 300px;
+    background-color: grey;
+    border-radius: 10px;
+    position: relative;
+}
+
+.profile-bottom{
+    width: 100%;
+    max-height: 105vh;
+    top: 300px;
+    left: 150px;
+    display: flex;
+    grid-template-columns: 380px 1fr;
+}
+
+.created-blog-right-side{
+    width: 100%;
+    display: flex;
+    border: 1px solid grey;
+    border-radius: 10px;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.created-blog{
+    width: 100%;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    border-top: 1px solid grey;
+    padding: 30px 0px 0px 30px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.created-blog-right-side::-webkit-scrollbar{
+    display: none;
+}
+
+.created-blog::-webkit-scrollbar{
+    display: none;
+}
+
+.profile-picture{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: grey;
+    position: absolute;
+    top: 200px;
+    left:60px;
+    border: 5px solid white;
+    overflow: hidden;
+}
+
+
+.blog-creater-data{
+    padding: 0px 40px 40px 40px ;
+    bottom: 90px;
+    width: 300px;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.creater-name{
+    font-size: 30px;
+    margin-top: 130px;
+}
+
+.profile-picture img{
+    width: 100%;
+    border-bottom: 2px solid grey;
+    margin-top: -2px;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.follow-btn button{
+    height: 30px;
+    width: 90px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    cursor:pointer;
+}
+
+
+.followers-btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+hr{
+    margin: 20px 0px;
+}
+
+.username-follow-flex{
+    display: flex;
+    margin-top: 130px;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.username-follow-flex .username{
+    font-size: 20px;
+}
+
+.categorys{
+    line-height: 1.5;
+    font-size: 20px;
+}
+
+.edit-button{
+    border-radius: 10px;
+    position: absolute;
+    bottom: 30px;
+    padding: 10px 20px;
+    background-color: black;
+    color:  white;
+    right: 30px;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.profile-edit{
+    position: absolute;
+    width: 100%;
+    z-index: 999;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+/* PROFILE BTNS  */
+
+.profile-btns{
+    display: flex;
+    padding: 20px 40px;
+    justify-content: space-between;
+}
+
+.profile-btns button{
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+}
+
+.oldest-latest{
+    display: flex;
+    gap: 20px;
+}
+
+.oldest-latest button{
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+

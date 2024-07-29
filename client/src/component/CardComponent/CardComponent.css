@@ -1,0 +1,113 @@
+.card-main-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  /* padding-top: 10px; */
+}
+
+.card-container {
+  width: 310px;
+  overflow: hidden;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.title {
+  display: flex;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.summary{
+  max-height: 35px;
+  color: grey;
+  padding: 7px 0px;
+  overflow: hidden;
+  font-size: 15px;
+}
+
+.truncated-title {
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 45px;
+  min-height: 45px;
+  text-overflow: ellipsis;
+}
+
+
+.card-link {
+  height: 200px;
+  overflow: hidden;
+  width: 100%;
+}
+
+ img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card-container:hover .image img {
+  transform: scale(1.1);
+
+}
+
+.card-container:hover {
+  transform: scale(1.03);
+}
+
+.category {
+  margin-top: 15px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.date p {
+  margin: 0;
+  color: #555;
+  font-size: 0.9em;
+}
+
+.card-bottom {
+  display: grid;
+  align-items: center;
+}
+
+.user-detail .profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.user-detail{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0px;
+}
+
+.creator-name p, .category p, .date p {
+  margin: 5px 0;
+}
+
+.bottom-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.profile-img{
+  height: 100%;
+}

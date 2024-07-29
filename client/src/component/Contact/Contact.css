@@ -1,0 +1,147 @@
+.contact{
+    margin-top: 20px;
+}
+
+.contact-img img{
+    width: 100%;
+    height: 350px;
+}
+
+.contact-img{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-img h1{
+    position: absolute;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 45px;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 50px 100px;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    color:black;
+}
+
+/* Left Section */
+.contact-left {
+    line-height: 1.8;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-left h2 {
+    color:black;
+    font-size: 40px;
+}
+
+.contact-left a {
+    color:black; 
+    text-decoration: none;
+}
+
+.contact-left a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Info */
+.contact-info {
+    margin-bottom: 20px;
+}
+
+.contact-info a {
+    display: block;
+    color:black; 
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.social-media{
+    display: flex;
+}
+
+/* Social Media Icons */
+.social-media a {
+    margin-right: 10px;
+    font-size: 25px;
+    margin-top: 10px;
+    color:black; 
+}
+
+.social-media a:hover {
+    color: black
+}
+
+/* Download CV Button */
+.download-cv-button{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e63946;
+    color: grey;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.download-cv-button:hover {
+    text-decoration: none;
+    background-color: #d62828;
+}
+
+/* Right Section */
+.contact-right {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.contact-right input,
+.contact-right textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: white; 
+    background-color: #333;
+}
+
+textarea{
+    height: 100px;
+}
+
+.contact-right input::placeholder,
+.contact-right textarea::placeholder {
+    color: #aaa;
+}
+
+.contact-right button {
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #e63946;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-right button:hover {
+    background-color: #d62828;
+}
+
+/* Map Container */
+.map-container {
+    width: 100%;
+    margin-top: 20px;
+}
