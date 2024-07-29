@@ -22,7 +22,7 @@ const Profile = () => {
 
     const fetchUserData = async () => {
       try {
-          const response = await fetch(`http://localhost:3000/api/findUser/user/${userId}`, {
+          const response = await fetch(`https://blog-app-q9u5.onrender.com/api/findUser/user/${userId}`, {
               method: 'GET',              
           });
           const resData = await response.json();
@@ -51,13 +51,13 @@ const Profile = () => {
   return (
     <div className='profile-containe'>
       <div className="profile-banner">
-      <img src={!data.banner ? "" :"http://localhost:3000/image/"+ data.banner} alt="" />
+      <img src={!data.banner ? "" :"https://blog-app-q9u5.onrender.com/image/"+ data.banner} alt="" />
         
       </div>
       <div className="profile-bottom">
         <div className="blog-creater-data">
           <div className="profile-picture">
-            <img className='profile-img' src={!data.profile ? profile_img : "http://localhost:3000/image/"+ data.profile} alt="" />
+            <img className='profile-img' src={!data.profile ? profile_img : "https://blog-app-q9u5.onrender.com/image/"+ data.profile} alt="" />
           </div>
           <div className="username-follow-flex">
             <p className='username'>@{data.username}</p>
@@ -100,9 +100,9 @@ const Profile = () => {
               <button onClick={() => setOldest(0) }>Oldest</button>
               <button onClick={() => setOldest(1) }>Latest</button>
             </div>
-            <Link to={`/edit/${user._id}`}>
+            <Link to={`/edit/${user?._id}`}>
             {
-              user._id === userId ? <button>Edit profile</button> : <></>
+              user?._id === userId ? <button>Edit profile</button> : <></>
             }
               
             </Link>

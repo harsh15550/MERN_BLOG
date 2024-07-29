@@ -20,8 +20,8 @@ const EditProfile = () => {
   const [banner , setBanner] = useState("");
 
   useEffect(() => {
-    setUsername(user.username);
-    setEmail(user.email);
+    setUsername(user?.username);
+    setEmail(user?.email);
   }, [user]);
 
   // USE REF
@@ -55,7 +55,7 @@ const EditProfile = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/api/findUser/update/${user._id}`, {
+      const response = await fetch(`https://blog-app-q9u5.onrender.com/api/findUser/update/${user?._id}`, {
         method: "PUT",
         body: formData,
       });
@@ -64,13 +64,13 @@ const EditProfile = () => {
       console.log(resData);
       if(resData.success === true){
         showSuccessToast(resData.message)
-        navigate(`/profile/${user._id}`);
+        navigate(`/profile/${user?._id}`);
         setLogindata(resData.user)
         localStorage.setItem("user" , JSON.stringify(resData.user))
       }
       console.log(resData);
     } catch (error) {
-      console.error("Error updating user:", error);
+      console.error("Error updating user?:", error);
     }
   };
 
@@ -81,13 +81,13 @@ const EditProfile = () => {
           <div className="edit-image">
 
             <div className="edit-banner">
-              <img src={!user.banner ? "" :"http://localhost:3000/image/"+ user.banner} alt="" />
+              <img src={!user?.banner ? "" :"https://blog-app-q9u5.onrender.com/image/"+ user?.banner} alt="" />
               <input ref={profileChange} onChange={e => setBanner(e.target.files[0])} type="file" name='image' hidden />
               <BiSolidPencil onClick={handleProfile} style={{color : "white" , backgroundColor : "rgb(30, 28, 28)" , padding:"4px"}} className='edit-banner-icon'/>
             </div>
             
             <div className="edit-profile-img">
-                <img className="edit-profile" src={!user.profile ? "" : "http://localhost:3000/image/"+ user.profile} alt="" />
+                <img className="edit-profile" src={!user?.profile ? "" : "https://blog-app-q9u5.onrender.com/image/"+ user?.profile} alt="" />
               <input ref={bannerChange} onChange={e => setProfile(e.target.files[0])} type="file" name='image' hidden />
               <BiSolidPencil onClick={handleBanner} style={{color : "white" , backgroundColor : "rgb(30, 28, 28)" , padding:"4px"}} className='edit-profile-icon'/>
             </div>

@@ -44,7 +44,7 @@ const StoreContextdata = ({children}) => {
     const loginHandler = async (event) => {
       event.preventDefault();
   
-      const response = await fetch('http://localhost:3000/api/user/login', {
+      const response = await fetch('https://blog-app-q9u5.onrender.com/api/user/login', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         credentials:"include",
@@ -81,7 +81,7 @@ const StoreContextdata = ({children}) => {
     // FIND ALL BLOG 
     const findAllPost = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/post/findpost', {
+        const response = await fetch('https://blog-app-q9u5.onrender.com/api/post/findpost', {
           method: 'GET',
         });
         const resData = await response.json();
@@ -98,7 +98,7 @@ const StoreContextdata = ({children}) => {
     
     // LOGOUT FUNCTION  
     const logoutFunction = async () => {
-      const response = await fetch("http://localhost:3000/api/user/logout" , {
+      const response = await fetch("https://blog-app-q9u5.onrender.com/api/user/logout" , {
         method: "POST",
       })
       var resData = await response.json();

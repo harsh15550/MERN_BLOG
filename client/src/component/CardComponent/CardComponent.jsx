@@ -23,7 +23,7 @@ const CardComponent = (posts) => {
           
             <div className="card-container">
                 <Link className='card-link' to={"/blogDetail/"+posts._id}>
-                  <img src={"http://localhost:3000/image/"+posts.image} alt="" />
+                  <img src={"https://blog-app-q9u5.onrender.com/image/"+posts.image} alt="" />
                 </Link> 
               <div className="card-bottom">
                 <div className="bottom-top-profile">
@@ -42,7 +42,7 @@ const CardComponent = (posts) => {
                   </div>
                   <div className="user-detail">
                     <div className="profile">
-                       <Link className='profile-img' to={`/profile/${posts.auther._id}`}> <img src={"http://localhost:3000/image/"+posts.auther.profile} alt="" /></Link>
+                       <Link className='profile-img' to={`/profile/${posts.auther._id}`}> <img src={"https://blog-app-q9u5.onrender.com/image/"+posts.auther.profile} alt="" /></Link>
                     </div>
                     <div className="creator-name">
                       <h3>{posts.auther.username}</h3>

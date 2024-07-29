@@ -24,7 +24,7 @@ const Register = () => {
 
     try {
       if(data.password === data.cpassword){
-    const response = await fetch('http://localhost:3000/api/user/register', {
+    const response = await fetch('https://blog-app-q9u5.onrender.com/api/user/register', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(({
