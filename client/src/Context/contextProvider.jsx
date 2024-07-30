@@ -44,7 +44,7 @@ const StoreContextdata = ({children}) => {
     const loginHandler = async (event) => {
       event.preventDefault();
   
-      const response = await fetch('http://localhost:3000/api/user/login', {
+      const response = await fetch('https://blog-app-q9u5.onrender.com/api/user/login', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         credentials:"include",
