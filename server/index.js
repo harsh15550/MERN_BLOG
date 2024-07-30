@@ -8,7 +8,6 @@ import userRouter from "./routes/userRoute.js";
 import postRouter from "./routes/postRoute.js";
 import findUserRouter from "./routes/findUserRoute.js";
 import FindBlogRouter from "./routes/findBlogroute.js";
-import fileUpload from "express-fileupload";
 
 
 mongoose.connect(process.env.DB_CONNECT).then(() => console.log("DB CONNECT")).catch(()=> console.log("CONNECTION FAILED"))
