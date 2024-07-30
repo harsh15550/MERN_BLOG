@@ -32,7 +32,6 @@ const Navbar = () => {
     };
 
     useEffect(() => {
-        console.log(originalData.postData);
     }, [originalData]);
 
 

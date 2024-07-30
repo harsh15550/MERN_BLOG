@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Route, Router, Routes } from 'react-router-dom'
 import Navbar from './component/Navbar/Navbar'
 import Login from './component/Login/Login'
@@ -14,32 +14,43 @@ import EditProfile from './component/EditProfile/EditProfile'
 import Home from './component/Home/Home'
 import About from './component/About/About'
 import Contact from './component/Contact/Contact'
+import { StoreContext } from './Context/contextProvider'
+import Loading from './component/Loading/Loading'
 
 // import profile from "../../assets/profile.jpg";
 
 const App = () => {
-  return (
-    <>
-    <div>
-      <ToastContainer/>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/blogs" element={<Blogs />} />
-        <Route path='/login' element={<Login/>} />
-        <Route path='/about' element={<About/>} />
-        <Route path='/contact' element={<Contact/>} />
-        <Route path='/register' element={<Register/>} />
-        <Route path='/createPost' element={<CreatePost/>} />
-        <Route path='/profile/:userId' element={<Profile/>} />
-        <Route path='/blogDetail/:id' element={<BlogDetail/>} />
-        <Route path='/edit/:loginId' element={<EditProfile/>} />
-      </Routes>
+  const { loading } = useContext(StoreContext);
 
-      <Footer/>
-    </div>
+  if (loading) {
+    return <Loading />;
+  }
+    return (
+      
+      <>
+        <div>
+          <ToastContainer/>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/loading" element={<Loading />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path='/login' element={<Login/>} />
+            <Route path='/about' element={<About/>} />
+            <Route path='/contact' element={<Contact/>} />
+            <Route path='/register' element={<Register/>} />
+            <Route path='/createPost' element={<CreatePost/>} />
+            <Route path='/profile/:userId' element={<Profile/>} />
+            <Route path='/blogDetail/:id' element={<BlogDetail/>} />
+            <Route path='/edit/:loginId' element={<EditProfile/>} />
+          </Routes>
+
+          <Footer/>
+        </div>
     </>
   )
+
+  
 }
 
 export default App

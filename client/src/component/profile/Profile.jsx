@@ -8,15 +8,15 @@ import CardComponent from '../CardComponent/CardComponent';
 import Loading from '../Loading/Loading';
 
 const Profile = () => {
-  const {logindata, allPost, loading , user } = useContext(StoreContext);
+  const {logindata, allPost , user } = useContext(StoreContext);
 
   useEffect(()=>{
-    console.log(allPost);
   },[allPost])
 
-  const [oldest , setOldest] = useState(0);  
+  const [oldest , setOldest] = useState(0); 
+  const [countBlog , setCountBlog] = useState(0); 
 
-  const [data , setData] = useState({});  
+  const [data , setData] = useState({});
 
   const {userId} = useParams();
 
@@ -27,7 +27,6 @@ const Profile = () => {
           });
           const resData = await response.json();
           setData(resData);
-          // setLogindata();
       } catch (error) {
           console.error('Error fetching login user data:', error);
       }
@@ -37,11 +36,10 @@ const Profile = () => {
     fetchUserData();
   },[userId])  
 
-  useEffect(()=>{
-    console.log(userId);
-    console.log(data);
-    console.log(user);
-  },[])
+  useEffect(() => {
+    const userBlogs = allPost.filter(post => post.auther._id === data._id);
+    setCountBlog(userBlogs.length);
+  }, [allPost, data]);
 
 
   if (!logindata) {
@@ -69,7 +67,7 @@ const Profile = () => {
           <div className="profile-follower">
             <div className="followers-btns">
               <div className="follower-data">
-                <h2>20</h2>
+                <h2>{countBlog}</h2>
                 <p>Blogs</p>
               </div>
               <div className="follower-data">
@@ -112,7 +110,7 @@ const Profile = () => {
 
             {
               oldest === 1 ? <>
-                {loading ? <div style={{position : 'absolute' , left : "60%" , top : "55%" }}><Loading/></div> : allPost.slice().reverse().map((post, index) => {
+                {allPost.slice().reverse().map((post, index) => {
                   
                   if(data._id === post.auther._id){
                 return (
@@ -123,7 +121,7 @@ const Profile = () => {
               }
               })}
               </> : <>
-              {loading ? <div style={{position : 'absolute' , left : "60%" , top : "55%" }}><Loading/></div> : allPost.map((post, index) => {
+              {allPost.map((post, index) => {
               if(data._id === post.auther._id){
                 return (
                   <div key={index}>

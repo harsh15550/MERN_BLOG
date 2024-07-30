@@ -54,7 +54,6 @@ const StoreContextdata = ({children}) => {
         }))
       })
       const res = await response.json()
-      console.log("res" , res.userData);
       try {
         
           if(res.success === true){
@@ -124,7 +123,6 @@ const StoreContextdata = ({children}) => {
               console.log(error);
           }
       }
-      console.log(user);
   },[logindata])
 
     const contextData = {

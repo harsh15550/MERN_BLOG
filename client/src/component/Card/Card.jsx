@@ -7,11 +7,10 @@ import { StoreContext } from '../../Context/contextProvider';
 const Card = ({categorys}) => {
 
 
-  const {loading , allPost , findAllPost } = useContext(StoreContext);
+  const { allPost , findAllPost } = useContext(StoreContext);
   const filteredPosts = allPost.filter(post => categorys === "All" || categorys === post.category).reverse();
 
   useEffect(() => {
-    console.log(allPost);
   }, [allPost]);
 
   useEffect(() => {
@@ -20,9 +19,7 @@ const Card = ({categorys}) => {
   return (
     <>
             <div className='cards-flex'>
-                {loading ? (
-                    <Loading className="loading"/>
-                ) : (
+                {
                         filteredPosts.length > 0 ? (
                             filteredPosts.map((post, index) => (
                                 <div key={index}>
@@ -35,7 +32,7 @@ const Card = ({categorys}) => {
                         
                       
                       
-                )}
+                }
             </div>
         </>
   );

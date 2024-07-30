@@ -12,7 +12,6 @@ const BlogDetail = () => {
 
   const {loading , allPost} = useContext(StoreContext);
 
-  console.log(allPost);
 
   const fetchBlog = async () => {
     try {
@@ -40,12 +39,11 @@ const BlogDetail = () => {
 
   useEffect(() => {
     if (findBlog) {
-      console.log("Fetched Blog Data:", findBlog);
     }
   }, [findBlog]);
 
   if (loader) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
 
   if (!findBlog) {
