@@ -12,7 +12,7 @@ import FindBlogRouter from "./routes/findBlogroute.js";
 
 mongoose.connect(process.env.DB_CONNECT).then(() => console.log("DB CONNECT")).catch(()=> console.log("CONNECTION FAILED"))
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
