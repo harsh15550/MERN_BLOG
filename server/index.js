@@ -19,7 +19,7 @@ const app = express();
 app.use(express.json());
 app.use("/image" , express.static("upload"))
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://nimble-squirrel-ad5f7c.netlify.app/',
   credentials: true
 }));
 app.use(cookieParser());
