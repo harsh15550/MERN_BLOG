@@ -66,7 +66,7 @@ const BlogDetail = () => {
                 <h1>{findBlog.posts.title}</h1>
               </div>
               <div className="blog-userdetail">
-                <Link to={`https://blogappfanciful.netlify.app/${findBlog.posts.auther._id}`}>
+                <Link to={`/profile/${findBlog.posts.auther._id}`}>
                   <div className="blog-detail-profile-img">
                     <img src={`${url}/image/${findBlog.posts.auther.profile}`} alt="" />
                   </div>
