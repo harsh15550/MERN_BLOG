@@ -19,7 +19,7 @@ const app = express();
 app.use(express.json());
 app.use("/image" , express.static("upload"))
 app.use(cors({
-  origin: 'https://fanciful-toffee-515c77.netlify.app',
+  origin: 'https://blogappfanciful.netlify.app/',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
