@@ -42,7 +42,7 @@ const CreatePost = () => {
 
   const navigate = useNavigate();
 
-  const {showSuccessToast , showErrorToast} = useContext(StoreContext);
+  const {showSuccessToast , showErrorToast, url} = useContext(StoreContext);
 
   useEffect(() => {
     console.log({ title, description, image, category });
@@ -67,7 +67,7 @@ const CreatePost = () => {
     formData.append('image', image);
 
     try {
-      const response = await fetch("http://localhost:3000/api/post/add", {
+      const response = await fetch(`${url}/api/post/add`, {
         method: "POST",
         body: formData,
         credentials: 'include',
