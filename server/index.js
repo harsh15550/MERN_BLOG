@@ -19,7 +19,7 @@ const app = express();
 app.use(express.json());
 app.use("/image" , express.static("upload"))
 app.use(cors({
-  origin: 'https://blogappfanciful.netlify.app',
+  origin: 'https://legendary-bavarois-b73556.netlify.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
