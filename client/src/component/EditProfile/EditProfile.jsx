@@ -7,7 +7,7 @@ import profile_img from "../../assets/profile.jpg";
 
 
 const EditProfile = () => {
-  const { showSuccessToast , setLogindata , user  } = useContext(StoreContext);
+  const { showSuccessToast , setLogindata , user, url } = useContext(StoreContext);
 
   console.log(user);
   console.log(user);
@@ -55,7 +55,7 @@ const EditProfile = () => {
     }
 
     try {
-      const response = await fetch(`https://blog-app-q9u5.onrender.com/api/findUser/update/${user?._id}`, {
+      const response = await fetch(`${url}/api/findUser/update/${user?._id}`, {
         method: "PUT",
         body: formData,
       });
@@ -81,13 +81,13 @@ const EditProfile = () => {
           <div className="edit-image">
 
             <div className="edit-banner">
-              <img src={!user?.banner ? "" :"https://blog-app-q9u5.onrender.com/image/"+ user?.banner} alt="" />
+              <img src={!user?.banner ? "" :`${url}/image/`+ user?.banner} alt="" />
               <input ref={profileChange} onChange={e => setBanner(e.target.files[0])} type="file" name='image' hidden />
               <BiSolidPencil onClick={handleProfile} style={{color : "white" , backgroundColor : "rgb(30, 28, 28)" , padding:"4px"}} className='edit-banner-icon'/>
             </div>
             
             <div className="edit-profile-img">
-                <img className="edit-profile" src={!user?.profile ? "" : "https://blog-app-q9u5.onrender.com/image/"+ user?.profile} alt="" />
+                <img className="edit-profile" src={!user?.profile ? "" : `${url}/image/`+ user?.profile} alt="" />
               <input ref={bannerChange} onChange={e => setProfile(e.target.files[0])} type="file" name='image' hidden />
               <BiSolidPencil onClick={handleBanner} style={{color : "white" , backgroundColor : "rgb(30, 28, 28)" , padding:"4px"}} className='edit-profile-icon'/>
             </div>

@@ -50,9 +50,7 @@ const login = async (req, res) => {
             const token = jwt.sign({userId : userData._id , username} , process.env.JWT_SECRET)
             res.cookie('token', token, {
                 httpOnly: true,
-                secure: false, // Set to false for HTTP
-                sameSite: 'Lax', // Set SameSite to 'Lax'
-                maxAge: 24 * 60 * 60 * 1000 // 1 day in milliseconds
+                sameSite: 'Lax'
               });
             res.status(200).json({ success: true , userData, token, message: "Login successful" });
         } else {

@@ -30,7 +30,9 @@ const App = () => {
       <>
         <div>
           <ToastContainer/>
-          <Navbar />
+          <div style={{marginBottom:"100px"}}>
+            <Navbar />
+          </div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/loading" element={<Loading />} />

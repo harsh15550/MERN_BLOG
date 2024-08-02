@@ -8,7 +8,7 @@ import profile from '../../assets/profile-png-icon-2.jpg';
 import { ImCross } from "react-icons/im";
 
 const Navbar = () => {
-    const { logoutFunction, logindata, token , user} = useContext(StoreContext);    
+    const { logoutFunction, logindata,url, token , user} = useContext(StoreContext);    
     const [searchData, setSearchData] = useState("");
     const [searchBox, setSearchBox] = useState(false);
     const [originalData, setOriginalData] = useState({ postData: [] });
@@ -19,7 +19,7 @@ const Navbar = () => {
     const fetchSearchData = async () => {
         try {
             if (searchData.trim() !== "") {
-                const response = await fetch(`https://blog-app-q9u5.onrender.com/api/post/search?title=${searchData}`, {
+                const response = await fetch(`${url}/api/post/search?title=${searchData}`, {
                     method: "GET"
                 });
                 const data = await response.json();
@@ -66,7 +66,7 @@ const Navbar = () => {
                                         originalData.postData.length > 0 ? (
                                             originalData.postData.map((creEle, index) => (
                                                 <div key={index} className='search-data-profile' onClick={() =>{ setSearchBox(false); setSearchData("")}}>
-                                                    <Link to={`/profile/${creEle.auther._id}`}><img src={`https://blog-app-q9u5.onrender.com/image/${creEle.auther.profile}`} alt="" /></Link>
+                                                    <Link to={`/profile/${creEle.auther._id}`}><img src={`${url}/image/${creEle.auther.profile}`} alt="" /></Link>
                                                     <Link style={{textDecoration : "none" , color : "white"}} to={`/blogDetail/${creEle._id}`}><div >{creEle.title}</div></Link>
                                                 </div>
                                             ))
@@ -92,7 +92,7 @@ const Navbar = () => {
                         <div className="create-post">
                             <Link to={"/createPost"}><button>Create Blog</button></Link>
                             <div className="profile-container">
-                                <img className="profile-image" src={"https://blog-app-q9u5.onrender.com/image/"+user?.profile} alt="Profile" />
+                                <img className="profile-image" src={`${url}/image/`+user?.profile} alt="Profile" />
                                 <div className="createpost-bottom">
                                     <button onClick={logoutFunction}>Logout</button>
                                     <Link to={`/profile/${user?._id}`}><button>Profile</button></Link>

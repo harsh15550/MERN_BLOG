@@ -14,6 +14,8 @@ const StoreContextdata = ({children}) => {
   const [logindata , setLogindata] = useState(localStorage.getItem("user") || {});
   const [user , setUser] = useState({});
 
+  const url = "https://blog-app-q9u5.onrender.com";
+
 
   const navigate = useNavigate();
 
@@ -43,44 +45,47 @@ const StoreContextdata = ({children}) => {
     // LOGIN FUNCTION 
     const loginHandler = async (event) => {
       event.preventDefault();
-  
-      const response = await fetch('http://localhost:3000/api/user/login', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        credentials:"include",
-        body: JSON.stringify(({
-          username : data.username,
-          password : data.password
-        }))
-      })
-      const res = await response.json()
+    
       try {
-        
-          if(res.success === true){
-            setData({
-              username : "",
-              password : "",
-            })
-            localStorage.setItem("token" , res.token)
-            localStorage.setItem("user" , JSON.stringify(res.userData))
-            setLogindata(res.userData);
-            showSuccessToast(res.message)
-            setToken(res.token);
-            navigate("/");  
-          }
-          else{
-            showErrorToast(res.message);
-          }     
-        
+        const response = await fetch(`${url}/api/user/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({
+            username: data.username,
+            password: data.password
+          })
+        });
+    
+        console.log('Response:', response); 
+    
+        const res = await response.json();
+        console.log('Response JSON:', res); 
+    
+        if (res.success) {
+          setData({
+            username: "",
+            password: "",
+          });
+          localStorage.setItem("token", res.token);
+          localStorage.setItem("user", JSON.stringify(res.userData));
+          setLogindata(res.userData);
+          showSuccessToast(res.message);
+          setToken(res.token);
+          navigate("/");
+        } else {
+          showErrorToast(res.message);
+        }
       } catch (error) {
         console.log(error);
       }
-    }
+    };
+    
 
     // FIND ALL BLOG 
     const findAllPost = async () => {
       try {
-        const response = await fetch('https://blog-app-q9u5.onrender.com/api/post/findpost', {
+        const response = await fetch(`${url}/api/post/findpost`, {
           method: 'GET',
         });
         const resData = await response.json();
@@ -97,7 +102,7 @@ const StoreContextdata = ({children}) => {
     
     // LOGOUT FUNCTION  
     const logoutFunction = async () => {
-      const response = await fetch("https://blog-app-q9u5.onrender.com/api/user/logout" , {
+      const response = await fetch(`${url}/api/user/logout` , {
         method: "POST",
       })
       var resData = await response.json();
@@ -132,6 +137,7 @@ const StoreContextdata = ({children}) => {
         logoutFunction,
         setToken,
         loginHandler,
+        url,
         data,
         setData,
         loginUser,

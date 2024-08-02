@@ -8,7 +8,7 @@ import CardComponent from '../CardComponent/CardComponent';
 import Loading from '../Loading/Loading';
 
 const Profile = () => {
-  const {logindata, allPost , user } = useContext(StoreContext);
+  const {logindata, allPost, user, url } = useContext(StoreContext);
 
   useEffect(()=>{
   },[allPost])
@@ -17,12 +17,15 @@ const Profile = () => {
   const [countBlog , setCountBlog] = useState(0); 
 
   const [data , setData] = useState({});
+  useEffect(()=>{
+    console.log(logindata);
+  },[logindata])
 
   const {userId} = useParams();
 
     const fetchUserData = async () => {
       try {
-          const response = await fetch(`https://blog-app-q9u5.onrender.com/api/findUser/user/${userId}`, {
+          const response = await fetch(`${url}/api/findUser/user/${userId}`, {
               method: 'GET',              
           });
           const resData = await response.json();
@@ -49,18 +52,18 @@ const Profile = () => {
   return (
     <div className='profile-containe'>
       <div className="profile-banner">
-      <img src={!data.banner ? "" :"https://blog-app-q9u5.onrender.com/image/"+ data.banner} alt="" />
+      <img src={!data.banner ? "" :`${url}/image/`+ data.banner} alt="" />
         
       </div>
       <div className="profile-bottom">
         <div className="blog-creater-data">
           <div className="profile-picture">
-            <img className='profile-img' src={!data.profile ? profile_img : "https://blog-app-q9u5.onrender.com/image/"+ data.profile} alt="" />
+            <img className='profile-img' src={!data.profile ? profile_img : `${url}/image/`+ data.profile} alt="" />
           </div>
           <div className="username-follow-flex">
             <p className='username'>@{data.username}</p>
-            <div className="follow-btn">
-              <button>Follow</button>
+            <div>
+              <button style={{padding : "10px 25px" , background:"black", color:"white" , borderRadius:"8px"}} >Follow</button>
             </div>
           </div>
           <hr />

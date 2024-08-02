@@ -10,12 +10,12 @@ const BlogDetail = () => {
   const [loader, setLoader] = useState(true);
   const { id } = useParams();
 
-  const {loading , allPost} = useContext(StoreContext);
+  const {loading , allPost, url} = useContext(StoreContext);
 
 
   const fetchBlog = async () => {
     try {
-      const response = await fetch(`https://blog-app-q9u5.onrender.com/api/findBlog/blog/${id}`, {
+      const response = await fetch(`${url}/api/findBlog/blog/${id}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ const BlogDetail = () => {
     <div className='blog-detail' onScroll={scrollTo(0,0)}>
         <div className="blog-data">
             <div className="blog-image">
-                <img src={`https://blog-app-q9u5.onrender.com/image/${findBlog.posts.image}`} alt="" />
+                <img src={`${url}/image/${findBlog.posts.image}`} alt="" />
             </div>
             <div className="blog-bottom-content">
               <div className="blog-detail-title">
@@ -68,7 +68,7 @@ const BlogDetail = () => {
               <div className="blog-userdetail">
                 <Link to={`http://localhost:5173/profile/${findBlog.posts.auther._id}`}>
                   <div className="blog-detail-profile-img">
-                    <img src={`https://blog-app-q9u5.onrender.com/image/${findBlog.posts.auther.profile}`} alt="" />
+                    <img src={`${url}/image/${findBlog.posts.auther.profile}`} alt="" />
                   </div>
                 </Link>
                 

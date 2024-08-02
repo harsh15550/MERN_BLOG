@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { StoreContext } from '../../Context/contextProvider';
 const Register = () => {
 
-  const {showSuccessToast , showErrorToast} = useContext(StoreContext);
+  const {showSuccessToast , showErrorToast, url} = useContext(StoreContext);
 
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const Register = () => {
 
     try {
       if(data.password === data.cpassword){
-    const response = await fetch('https://blog-app-q9u5.onrender.com/api/user/register', {
+    const response = await fetch(`${url}/api/user/register`, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(({
