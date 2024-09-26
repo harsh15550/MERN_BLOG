@@ -38,7 +38,7 @@ const BlogDetail = () => {
 
   const deletePost = async () => {
     try {
-      const res = await fetch(`http://localhost:3000/api/post/delete/${findBlog?.posts?._id}`, {
+      const res = await fetch(`${url}/${findBlog?.posts?._id}`, {
         method: "POST", 
         headers: {
           "Content-Type": "application/json", 
