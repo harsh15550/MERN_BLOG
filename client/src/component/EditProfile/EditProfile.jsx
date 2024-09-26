@@ -9,9 +9,6 @@ import profile_img from "../../assets/profile.jpg";
 const EditProfile = () => {
   const { showSuccessToast , setLogindata , user, url } = useContext(StoreContext);
 
-  console.log(user);
-  console.log(user);
-
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -81,13 +78,13 @@ const EditProfile = () => {
           <div className="edit-image">
 
             <div className="edit-banner">
-              <img src={!user?.banner ? "" :`${url}/image/`+ user?.banner} alt="" />
+              <img src={!user?.banner ? "" : user?.banner} alt="" />
               <input ref={profileChange} onChange={e => setBanner(e.target.files[0])} type="file" name='image' hidden />
               <BiSolidPencil onClick={handleProfile} style={{color : "white" , backgroundColor : "rgb(30, 28, 28)" , padding:"4px"}} className='edit-banner-icon'/>
             </div>
             
             <div className="edit-profile-img">
-                <img className="edit-profile" src={!user?.profile ? "" : `${url}/image/`+ user?.profile} alt="" />
+                <img className="edit-profile" src={!user?.profile ? "" : user?.profile} alt="" />
               <input ref={bannerChange} onChange={e => setProfile(e.target.files[0])} type="file" name='image' hidden />
               <BiSolidPencil onClick={handleBanner} style={{color : "white" , backgroundColor : "rgb(30, 28, 28)" , padding:"4px"}} className='edit-profile-icon'/>
             </div>

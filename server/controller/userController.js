@@ -49,9 +49,8 @@ const login = async (req, res) => {
         if (info === true) {
             const token = jwt.sign({userId : userData._id , username} , process.env.JWT_SECRET)
             res.cookie('token', token, {
-                // httpOnly: true, // यदि आपको क्लाइंट-साइड जावास्क्रिप्ट से कुकी को एक्सेस करने की अनुमति नहीं चाहिए
-                secure: true,   // यदि आप HTTPS का उपयोग कर रहे हैं, तो इसे true पर सेट करें
-                sameSite: 'None', // क्रॉस-साइट कुकीज़ के लिए इसे 'None' पर सेट करें
+                secure: true,  
+                sameSite: 'None', 
             });
             res.status(200).json({ success: true , userData, token, message: "Login successful" });
         } else {

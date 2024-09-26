@@ -38,3 +38,13 @@
 .top-blog{
     margin-left: 20px;
 }
+
+.deletebtn{
+    padding: 8px 10px;
+    height: 40px;
+    margin-right: 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: red;
+    color: white;
+}

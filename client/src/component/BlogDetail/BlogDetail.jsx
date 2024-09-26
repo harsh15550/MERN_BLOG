@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import './BlogDetail.css'
 import { StoreContext } from '../../Context/contextProvider';
 import CardComponent from '../CardComponent/CardComponent';
@@ -10,8 +10,13 @@ const BlogDetail = () => {
   const [loader, setLoader] = useState(true);
   const { id } = useParams();
 
-  const {loading , allPost, url} = useContext(StoreContext);
+  const { loading, allPost, url, user, showSuccessToast, showErrorToast } = useContext(StoreContext);
+  const navigate = useNavigate();
 
+  console.log(findBlog?.posts?.auther?._id);
+  useEffect(() => {
+    console.log(user._id);
+  },[])
 
   const fetchBlog = async () => {
     try {
@@ -30,6 +35,30 @@ const BlogDetail = () => {
       console.error("Error fetching blog:", error);
     }
   };
+
+  const deletePost = async () => {
+    try {
+      const res = await fetch(`http://localhost:3000/api/post/delete/${findBlog?.posts?._id}`, {
+        method: "POST", 
+        headers: {
+          "Content-Type": "application/json", 
+        },
+      });
+  
+      const data = await res.json();
+  
+      if (data.success) {
+        showSuccessToast(data.message); 
+        navigate("/blogs"); 
+      } else {
+        showErrorToast(data.message);
+      }
+    } catch (error) {
+      console.error("Error deleting post:", error);
+      showErrorToast("An error occurred while trying to delete the post.");
+    }
+  };
+  
 
   useEffect(() => {
     if (id) {
@@ -53,56 +82,62 @@ const BlogDetail = () => {
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
-  };  
+  };
 
   return (
-    <div className='blog-detail' onScroll={scrollTo(0,0)}>
-        <div className="blog-data">
-            <div className="blog-image">
-                <img src={`${url}/image/${findBlog.posts.image}`} alt="" />
-            </div>
-            <div className="blog-bottom-content">
-              <div className="blog-detail-title">
-                <h1>{findBlog.posts.title}</h1>
-              </div>
-              <div className="blog-userdetail">
-                <Link to={`/profile/${findBlog.posts.auther._id}`}>
-                  <div className="blog-detail-profile-img">
-                    <img src={`${url}/image/${findBlog.posts.auther.profile}`} alt="" />
-                  </div>
-                </Link>
-                
-                <div className="blog-userdetail-date">
-                  <h2>{findBlog.posts.auther.username}</h2>
-                  <p>{formatDate(findBlog.posts.date)}</p>
-                </div>
-              </div>
-              <div style={{color : "grey" , marginTop : "20px"}} className="blog-detail-summary">
-                {findBlog.posts.summary}    
-              </div>
-              <div 
-                className='blog-origian-content'
-                dangerouslySetInnerHTML={{ __html: findBlog.posts.description.replace(/<img/g, '<img style="height: 500px; margin : 20px 0px;"') }}
-                style={{ maxWidth: '900px' }} 
-              />
-            </div>
+    <div className='blog-detail' onScroll={scrollTo(0, 0)}>
+      <div className="blog-data">
+        <div className="blog-image">
+          <img src={`${findBlog?.posts?.image}`} alt="" />
         </div>
-        <div className="top-blog">
+        <div className="blog-bottom-content">
+          <div className="blog-detail-title">
+            <h1>{findBlog?.posts?.title}</h1>
+          </div>
+          <div className="" style={{display:'flex' , justifyContent:'space-between'}} >
+
+            <div className="blog-userdetail">
+              <Link to={`/profile/${findBlog?.posts?.auther._id}`}>
+                <div className="blog-detail-profile-img">
+                  <img src={`${findBlog?.posts?.auther.profile}`} alt="" />
+                </div>
+              </Link>
+
+              <div className="blog-userdetail-date">
+                <h2>{findBlog?.posts?.auther.username}</h2>
+                <p>{formatDate(findBlog?.posts?.date)}</p>
+              </div>
+            </div>
+            {
+              findBlog?.posts?.auther?._id === user._id ? <button onClick={() => deletePost()} className="deletebtn" >Delete Post</button> : <></>
+            }
+          </div>
+          <div style={{ color: "grey", marginTop: "20px" }} className="blog-detail-summary">
+            {findBlog?.posts?.summary}
+          </div>
+          <div
+            className='blog-origian-content'
+            dangerouslySetInnerHTML={{ __html: findBlog?.posts?.description.replace(/<img/g, '<img style="height: 500px; margin : 20px 0px;"') }}
+            style={{ maxWidth: '900px' }}
+          />
+        </div>
+      </div>
+      <div className="top-blog">
         {loading ? (
           <Loading />
         ) : (
           allPost.slice().reverse().map((post, index) => {
-            if(index < 4){
+            if (index < 4) {
               return (
                 <div key={index}>
                   <CardComponent {...post} />
                 </div>
               )
             }
-            
+
           })
         )}
-        </div>
+      </div>
     </div>
   );
 };

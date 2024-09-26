@@ -1,4 +1,5 @@
 import userModel from "../model/userModel.js";
+import { v2 as cloudinaryV2 } from 'cloudinary';
 
 const findOneUser = async (req, res) => {
     try {
@@ -17,23 +18,29 @@ const findOneUser = async (req, res) => {
     }
 }; 
 
-export const findUserUpdate = async (req , res) => {
+export const findUserUpdate = async (req, res) => {
     try {
         const id = req.params.id;
-        const user = await userModel.findByIdAndUpdate(id , req.body , {new : true});
-        if (req.files) {   
+        const user = await userModel.findByIdAndUpdate(id, req.body, { new: true });
+
+        if (req.files) {
+            // If profile image is uploaded, upload to Cloudinary
             if (req.files.profile) {
-                user.profile = req.files.profile[0].filename;
+                const profileResult = await cloudinaryV2.uploader.upload(req.files.profile[0].path);
+                user.profile = profileResult.secure_url; // Store the Cloudinary URL
             }
+
+            // If banner image is uploaded, upload to Cloudinary
             if (req.files.banner) {
-                user.banner = req.files.banner[0].filename;
+                const bannerResult = await cloudinaryV2.uploader.upload(req.files.banner[0].path);
+                user.banner = bannerResult.secure_url; // Store the Cloudinary URL
             }
         }
-        
+
         await user.save();
-        res.json({success : true ,user , message : "Udate Successfully"})
+        res.json({ success: true, user, message: "Update Successfully" });
     } catch (error) {
-        res.json({error : error.message})
+        res.json({ error: error.message });
     }
 }
 

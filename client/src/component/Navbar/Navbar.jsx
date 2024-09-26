@@ -66,7 +66,7 @@ const Navbar = () => {
                                         originalData.postData.length > 0 ? (
                                             originalData.postData.map((creEle, index) => (
                                                 <div key={index} className='search-data-profile' onClick={() =>{ setSearchBox(false); setSearchData("")}}>
-                                                    <Link to={`/profile/${creEle.auther._id}`}><img src={`${url}/image/${creEle.auther.profile}`} alt="" /></Link>
+                                                    <Link to={`/profile/${creEle.auther._id}`}><img src={`${creEle.auther.profile}`} alt="" /></Link>
                                                     <Link style={{textDecoration : "none" , color : "white"}} to={`/blogDetail/${creEle._id}`}><div >{creEle.title}</div></Link>
                                                 </div>
                                             ))
@@ -92,7 +92,7 @@ const Navbar = () => {
                         <div className="create-post">
                             <Link to={"/createPost"}><button>Create Blog</button></Link>
                             <div className="profile-container">
-                                <img className="profile-image" src={`${url}/image/`+user?.profile} alt="Profile" />
+                                <img className="profile-image" src={user?.profile} alt="Profile" />
                                 <div className="createpost-bottom">
                                     <button onClick={logoutFunction}>Logout</button>
                                     <Link to={`/profile/${user?._id}`}><button>Profile</button></Link>

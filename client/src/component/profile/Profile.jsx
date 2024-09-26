@@ -52,13 +52,13 @@ const Profile = () => {
   return (
     <div className='profile-containe'>
       <div className="profile-banner">
-      <img src={!data.banner ? "" :`${url}/image/`+ data.banner} alt="" />
+      <img src={!data.banner ? "" : data.banner} alt="" />
         
       </div>
       <div className="profile-bottom">
         <div className="blog-creater-data">
           <div className="profile-picture">
-            <img className='profile-img' src={!data.profile ? profile_img : `${url}/image/`+ data.profile} alt="" />
+            <img className='profile-img' src={!data.profile ? profile_img : data.profile} alt="" />
           </div>
           <div className="username-follow-flex">
             <p className='username'>@{data.username}</p>

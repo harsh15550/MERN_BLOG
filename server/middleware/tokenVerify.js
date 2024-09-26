@@ -2,8 +2,6 @@ import jwt from "jsonwebtoken";
 
 const tokenVerify = (req , res , next) => {
     const {token} = req.cookies;
-    console.log(token);
-    console.log(req.headers);
     try {
         if(token){
             jwt.verify(token , process.env.JWT_SECRET , (err , decoded) => {
@@ -13,7 +11,6 @@ const tokenVerify = (req , res , next) => {
                 } 
                 
                 req.user = decoded;
-                console.log(decoded);
                 next();
             })
         } 

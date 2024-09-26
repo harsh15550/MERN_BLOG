@@ -15,6 +15,7 @@ const StoreContextdata = ({children}) => {
   const [user , setUser] = useState({});
 
   const url = "https://blog-app-q9u5.onrender.com";
+  // const url = "http://localhost:3000";
 
 
   const navigate = useNavigate();
@@ -104,6 +105,7 @@ const StoreContextdata = ({children}) => {
     const logoutFunction = async () => {
       const response = await fetch(`${url}/api/user/logout` , {
         method: "POST",
+        credentials : 'include'
       })
       var resData = await response.json();
       if(resData.success === true){

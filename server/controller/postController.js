@@ -1,26 +1,33 @@
 import postModel from "../model/postModel.js";
 import jwt from "jsonwebtoken";
+import { v2 as cloudinary } from 'cloudinary';
 
 const postAdd = async (req, res) => {
-    const image = req.file.filename;
-    // console.log(req.user);
     try {
         const info = req.user;
-            // const userData = await userModel.findById(info.userId);
-            const {title , description ,category , summary } = req.body;
-            const newPost =  new postModel({
-                title ,
-                description ,
-                category ,
-                auther : info.userId,
-                image,
-                summary
-            });    
-            await newPost.save(); 
-            res.status(201).json({message : "Blog added successfully"});
-        
+        const { title, description, category, summary } = req.body;
+
+        // Upload image to Cloudinary
+        const result = await cloudinary.uploader.upload(req.file.path, {
+            folder: 'blog_images', // Folder in Cloudinary
+        });
+
+        // Create a new post with the Cloudinary image URL
+        const newPost = new postModel({
+            title,
+            description,
+            category,
+            auther: info.userId,
+            image: result.secure_url,  // Save Cloudinary image URL in DB
+            summary
+        });
+
+        await newPost.save();  // Save the post
+
+        res.status(201).json({ message: "Blog added successfully" });
     } catch (error) {
-        return res.json({error}) 
+        console.log(error);  // Log error for debugging
+        return res.status(500).json({ error: error.message });
     }
 };
 
@@ -61,6 +68,18 @@ export const searchPost = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+export const deletePost = async (req , res) => {
+    try {
+        const post = await postModel.findByIdAndDelete(req.params.id);
+        if(!post) {
+            return res.json({message : "Not Post Found" , success : false})
+        }
+        return res.json({message : "Blog Deleted", success : true});
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 
 
 export default postAdd  
