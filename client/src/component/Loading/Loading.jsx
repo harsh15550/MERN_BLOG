@@ -1,12 +1,12 @@
-import React from 'react'
-import './Loading.css'
+import React from 'react';
+import './Loading.css';
 
 const Loading = () => {
   return (
-    <div className="loader" style={{position : "absolute", top:"50%" , left:"50%"}}>
+    <div className="loader-container">
+      <span className="loader"></span>
     </div>
+  );
+};
 
-  )
-}
-
-export default Loading
+export default Loading;

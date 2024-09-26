@@ -25,8 +25,8 @@ cloudinary.config({
 app.use(express.json());
 app.use("/image" , express.static("upload"))
 app.use(cors({
-  origin: 'https://blogapplatest.netlify.app',
-  // origin : "http://localhost:5173",
+  // origin: 'https://blogapplatest.netlify.app',
+  origin : "http://localhost:5173",
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
