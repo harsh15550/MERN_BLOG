@@ -13,8 +13,8 @@ const BlogDetail = () => {
   const { loading, allPost, url, user, showSuccessToast, showErrorToast } = useContext(StoreContext);
   const navigate = useNavigate();
 
-  console.log(findBlog?.posts?.auther?._id);
   useEffect(() => {
+    console.log(findBlog?.posts?._id);
     console.log(user._id);
   },[])
 
@@ -38,7 +38,7 @@ const BlogDetail = () => {
 
   const deletePost = async () => {
     try {
-      const res = await fetch(`${url}/${findBlog?.posts?._id}`, {
+      const res = await fetch(`${url}/api/post/delete/${findBlog?.posts?._id}`, {
         method: "POST", 
         headers: {
           "Content-Type": "application/json", 
@@ -54,8 +54,8 @@ const BlogDetail = () => {
         showErrorToast(data.message);
       }
     } catch (error) {
-      console.error("Error deleting post:", error);
-      showErrorToast("An error occurred while trying to delete the post.");
+      // console.error("Error deleting post:", error);
+      // showErrorToast("An error occurred while trying to delete the post.");
     }
   };
   

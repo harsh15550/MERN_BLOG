@@ -14,8 +14,8 @@ const StoreContextdata = ({children}) => {
   const [logindata , setLogindata] = useState(localStorage.getItem("user") || {});
   const [user , setUser] = useState({});
 
-  const url = "https://blog-app-q9u5.onrender.com";
-  // const url = "http://localhost:3000";
+  // const url = "https://blog-app-q9u5.onrender.com";
+  const url = "http://localhost:3000";
 
 
   const navigate = useNavigate();
