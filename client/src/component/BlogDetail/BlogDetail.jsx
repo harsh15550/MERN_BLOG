@@ -10,13 +10,8 @@ const BlogDetail = () => {
   const [loader, setLoader] = useState(true);
   const { id } = useParams();
 
-  const { loading, allPost, url, user, showSuccessToast, showErrorToast } = useContext(StoreContext);
+  const { loading, allPost, url, user, showSuccessToast, showErrorToast, token } = useContext(StoreContext);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(findBlog?.posts?._id);
-    console.log(user._id);
-  },[])
 
   const fetchBlog = async () => {
     try {
@@ -108,8 +103,9 @@ const BlogDetail = () => {
                 <p>{formatDate(findBlog?.posts?.date)}</p>
               </div>
             </div>
+
             {
-              findBlog?.posts?.auther?._id === user._id ? <button onClick={() => deletePost()} className="deletebtn" >Delete Post</button> : <></>
+              findBlog?.posts?.auther?._id === user?._id && token ? <button onClick={() => deletePost()} className="deletebtn" >Delete Post</button> : <></>
             }
           </div>
           <div style={{ color: "grey", marginTop: "20px" }} className="blog-detail-summary">
