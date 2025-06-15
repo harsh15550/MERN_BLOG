@@ -20,7 +20,6 @@ A full-stack **MERN (MongoDB, Express.js, React, Node.js)** blog application tha
 
 ### Frontend
 - React
-- Tailwind CSS / CSS Modules
 - React Router DOM
 - Axios
 
@@ -30,5 +29,6 @@ A full-stack **MERN (MongoDB, Express.js, React, Node.js)** blog application tha
 - MongoDB
 - Mongoose
 - JSON Web Token (JWT) for authentication
+
 
 ---
