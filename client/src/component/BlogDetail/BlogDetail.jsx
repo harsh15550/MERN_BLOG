@@ -61,11 +61,6 @@ const BlogDetail = () => {
     }
   }, [id]);
 
-  useEffect(() => {
-    if (findBlog) {
-    }
-  }, [findBlog]);
-
   if (loader) {
     return <Loading />;
   }
@@ -92,14 +87,14 @@ const BlogDetail = () => {
           <div className="" style={{display:'flex' , justifyContent:'space-between'}} >
 
             <div className="blog-userdetail">
-              <Link to={`/profile/${findBlog?.posts?.auther._id}`}>
+              <Link to={`/profile/${findBlog?.posts?.auther?._id}`}>
                 <div className="blog-detail-profile-img">
-                  <img src={`${findBlog?.posts?.auther.profile}`} alt="" />
+                  <img src={`${findBlog?.posts?.auther?.profile}`} alt="" />
                 </div>
               </Link>
 
               <div className="blog-userdetail-date">
-                <h2>{findBlog?.posts?.auther.username}</h2>
+                <h2>{findBlog?.posts?.auther?.username}</h2>
                 <p>{formatDate(findBlog?.posts?.date)}</p>
               </div>
             </div>
