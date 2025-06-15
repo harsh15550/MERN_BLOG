@@ -13,9 +13,7 @@ A full-stack **MERN (MongoDB, Express.js, React, Node.js)** blog application tha
 - 🔍 Search and filter blogs by category
 - 🧾 Full blog details on a separate page
 - 🧑 Profile page to view all blogs by a user
-- ⚙️ Admin panel to manage users and blogs
-- 🌐 Mobile-responsive UI with clean design
-
+  
 ---
 
 ## 🛠️ Tech Stack
