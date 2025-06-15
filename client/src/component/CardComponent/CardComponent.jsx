@@ -22,8 +22,8 @@ const CardComponent = (posts) => {
         <div className='card-main-container'>
           
             <div className="card-container">
-                <Link className='card-link' to={"/blogDetail/"+posts._id}>
-                  <img src={posts.image} alt="" />
+                <Link className='card-link' to={"/blogDetail/"+posts?._id}>
+                  <img src={posts?.image} alt="" />
                 </Link> 
               <div className="card-bottom">
                 <div className="bottom-top-profile">
@@ -32,23 +32,23 @@ const CardComponent = (posts) => {
                 <div className="bottom-center">
 
                   <div className="title">
-                    <h3 className="truncated-title">{posts.title}</h3>
+                    <h3 className="truncated-title">{posts?.title}</h3>
                   </div>       
                   <div className="summary">
-                    <p className="summary">{posts.summary}</p>  
+                    <p className="summary">{posts?.summary}</p>  
                   </div>   
                   <div className="category">
-                      <h3 className='category-name'>{posts.category}</h3>
+                      <h3 className='category-name'>{posts?.category}</h3>
                   </div>
                   <div className="user-detail">
                     <div className="profile">
-                       <Link className='profile-img' to={`/profile/${posts.auther._id}`}> <img src={`${posts.auther.profile}`} alt="" /></Link>
+                       <Link className='profile-img' to={`/profile/${posts?.auther?._id}`}> <img src={`${posts?.auther?.profile}`} alt="" /></Link>
                     </div>
                     <div className="creator-name">
-                      <h3>{posts.auther.username}</h3>
+                      <h3>{posts?.auther.username}</h3>
                     </div>
                     <div className="date">
-                      <p>{formatDate(posts.date)}</p>
+                      <p>{formatDate(posts?.date)}</p>
                     </div>
                     
                   </div>
